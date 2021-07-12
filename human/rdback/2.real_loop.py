@@ -73,7 +73,7 @@ print(back.shape)
 
 # %%
 sub = []
-for x in range(0, 17):
+for x in range(0, 18):
     sub.append(normed.iloc[:,x] - back.iloc[:,x])
 subed = pd.concat(sub, axis=1)
 
