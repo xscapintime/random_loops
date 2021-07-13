@@ -19,6 +19,8 @@ import scipy.stats
 
 
 # %%
+# z-score matrix
+
 zmat = pd.read_csv('ctcf_rad21_zmat.txt', sep='\t')
 zmat.head()
 
@@ -34,6 +36,29 @@ zmat.shape
 zscore_mean = zmat.drop([0,1]).mean(axis=0)
 print(zscore_mean)
 len(zscore_mean)
+
+
+# %%
+# normed and subed loop number matrix
+
+subed_r1 = pd.read_csv('ctcf_rad21_subed_r1.txt', sep='\t')
+subed_r2 = pd.read_csv('ctcf_rad21_subed_r2.txt', sep='\t')
+
+
+# %%
+# merge subed matrix to one
+
+subed = pd.concat([subed_r1, subed_r2], axis=1)
+subed
+
+
+# %%
+# mean of loop number for each column
+# exclude first two rows
+
+loop_mean = subed.drop([0,1]).mean(axis=0)
+print(loop_mean)
+len(loop_mean)
 
 
 # %%
@@ -62,14 +87,6 @@ peaknum
 # %%
 len(peaknum)
 #type(peaknum)
-
-
-# %%
-min(peaknum)
-
-
-# %%
-zscore_mean
 
 
 # %%
@@ -112,15 +129,40 @@ plt.show()
 
 
 # %%
-## test the correlation 
-scipy.stats.pearsonr(zscore_mean, peaknum)
+## plot
+plt.figure(figsize=(8,6))
+
+plt.title("Peak number vs Loop number") #title
+plt.ylabel("Loop number") #x label
+plt.xlabel("Peak number") #y label
+
+plt.xlim((50000, 160000))
+#plt.ylim((-2, 2))
+
+sns.regplot(x=peaknum, y=loop_mean, fit_reg=True, marker="o", color="skyblue")
+for i in range(0, len(loop_mean)):
+     plt.text(x=peaknum[i]-2000, y=loop_mean[i]-0.005,
+          s=loop_mean.index[i], fontsize=8, color='black')
+
+plt.savefig('ctcf_rad21_pknum_lpnum.pdf')
+#plt.margins(0.1)
+plt.show()
 
 
 # %%
-scipy.stats.spearmanr(zscore_mean, peaknum)
+## test the correlation
+# zscore vs peak number
+
+print(scipy.stats.pearsonr(peaknum, zscore_mean))
+print(scipy.stats.spearmanr(peaknum, zscore_mean))
+print(scipy.stats.kendalltau(peaknum, zscore_mean))
 
 
 # %%
-scipy.stats.kendalltau(zscore_mean, peaknum)
+# peak number vs zsocre 
+
+print(scipy.stats.pearsonr(loop_mean, zscore_mean))
+print(scipy.stats.spearmanr(loop_mean, zscore_mean))
+print(scipy.stats.kendalltau(loop_mean, zscore_mean))
 
 
