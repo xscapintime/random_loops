@@ -81,56 +81,6 @@ print(peaknum)
 peaknum = np.repeat(peaknum, 5)
 peaknum
 
-# %% [markdown]
-# ```python
-# *Bad attempt*
-# 
-# CTCF_35846 = data.iloc[:,0:10] / peaknum[0]
-# CTCF_36632 = data.iloc[:,10:20] / peaknum[1]
-# CTCF_45230 = data.iloc[:,20:30] / peaknum[2]
-# CTCF_46184 = data.iloc[:,30:40] / peaknum[3]
-# CTCF_50988 = data.iloc[:,40:50] / peaknum[4]
-# RAD21_45689 = data.iloc[:,50:60] / peaknum[5]
-# RAD21_46164 = data.iloc[:,60:70] / peaknum[6]
-# RAD21_91096 = data.iloc[:,70:80] / peaknum[7]
-# RAD21_94415 = data.iloc[:,80:90] / peaknum[8]
-# 
-# CTCF_35846_r1 = CTCF_35846.iloc[:,CTCF_35846.columns.str.contains('r1')].mean(axis=1)
-# CTCF_36632_r1 = CTCF_35846.iloc[:,CTCF_36632.columns.str.contains('r1')].mean(axis=1)
-# CTCF_45230_r1 = CTCF_35846.iloc[:,CTCF_45230.columns.str.contains('r1')].mean(axis=1)
-# CTCF_46184_r1 = CTCF_35846.iloc[:,CTCF_46184.columns.str.contains('r1')].mean(axis=1)
-# CTCF_50988_r1 = CTCF_35846.iloc[:,CTCF_50988.columns.str.contains('r1')].mean(axis=1)
-# RAD21_45689_r1 = CTCF_35846.iloc[:,RAD21_45689.columns.str.contains('r1')].mean(axis=1)
-# RAD21_46164_r1 = CTCF_35846.iloc[:,RAD21_46164.columns.str.contains('r1')].mean(axis=1)
-# RAD21_91096_r1 = CTCF_35846.iloc[:,RAD21_91096.columns.str.contains('r1')].mean(axis=1)
-# RAD21_94415_r1 = CTCF_35846.iloc[:,RAD21_94415.columns.str.contains('r1')].mean(axis=1)
-# CTCF_35846_r2 = CTCF_35846.iloc[:,CTCF_35846.columns.str.contains('r2')].mean(axis=1)
-# CTCF_36632_r2 = CTCF_35846.iloc[:,CTCF_36632.columns.str.contains('r2')].mean(axis=1)
-# CTCF_45230_r2 = CTCF_35846.iloc[:,CTCF_45230.columns.str.contains('r2')].mean(axis=1)
-# CTCF_46184_r2 = CTCF_35846.iloc[:,CTCF_46184.columns.str.contains('r2')].mean(axis=1)
-# CTCF_50988_r2 = CTCF_35846.iloc[:,CTCF_50988.columns.str.contains('r2')].mean(axis=1)
-# RAD21_45689_r2 = CTCF_35846.iloc[:,RAD21_45689.columns.str.contains('r2')].mean(axis=1)
-# RAD21_46164_r2 = CTCF_35846.iloc[:,RAD21_46164.columns.str.contains('r2')].mean(axis=1)
-# RAD21_91096_r2 = CTCF_35846.iloc[:,RAD21_91096.columns.str.contains('r2')].mean(axis=1)
-# RAD21_94415_r2 = CTCF_35846.iloc[:,RAD21_94415.columns.str.contains('r2')].mean(axis=1)
-# 
-# av = [CTCF_35846_r1, CTCF_35846_r2, CTCF_36632_r1, CTCF_36632_r2, CTCF_45230_r1, CTCF_45230_r2, CTCF_46184_r1, CTCF_46184_r2,
-#       CTCF_50988_r1, CTCF_50988_r2, RAD21_45689_r1, RAD21_45689_r2, RAD21_46164_r1, RAD21_46164_r2, RAD21_91096_r1, RAD21_91096_r2,
-#       RAD21_94415_r1, RAD21_94415_r2]
-# avs = pd.concat(av,axis=1)
-# avs
-# 
-# col_1 = []
-# col_2 = []
-# for n in name:
-#     col_1.append(n + '_r1')
-#     col_2.append(n + '_r2')
-# cols = col_1 + col_2
-# cols.sort()
-# 
-# avs.columns = cols
-# avs.columns
-# ```
 
 # %%
 len(peaknum)
