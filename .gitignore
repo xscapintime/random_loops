@@ -2,3 +2,6 @@
 *.txt
 
 *.bed
+
+*.ipynb
+.ipynb_checkpoints/
