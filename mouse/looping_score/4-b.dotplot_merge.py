@@ -35,8 +35,8 @@ used = set()
 names = [n.split('_r')[0] for n in zmat.columns]
 names = [x for x in names if x not in used and (used.add(x) or True)]
 
-zmat_r1 = zmat.filter(regex='r1').set_axis(names, axis='columns', inplace=False)
-zmat_r2 = zmat.filter(regex='r2').set_axis(names, axis='columns', inplace=False)
+zmat_r1 = zmat.filter(regex='_r1').set_axis(names, axis='columns', inplace=False)
+zmat_r2 = zmat.filter(regex='_r2').set_axis(names, axis='columns', inplace=False)
 
 zmat_merge = (zmat_r1+zmat_r2).apply(lambda x: x/2)
 
@@ -125,8 +125,8 @@ plt.title("Peak number vs Z-score") #title
 plt.xlabel("Peak number") #x label
 plt.ylabel("Z-sore") #y label
 
-plt.xlim((950, 160000))
-#plt.ylim((-2, 2))
+plt.xlim((900, 150000))
+plt.ylim((-2.2, 2.2))
 
 sns.regplot(x=peaknum, y=zscore_mean, fit_reg=True, marker="o", color="skyblue")
 for i in range(0, len(zscore_mean)):
@@ -147,8 +147,8 @@ plt.title("Peak number vs Loop number") #title
 plt.xlabel("Peak number") #x label
 plt.ylabel("Loop number") #y label
 
-plt.xlim((950, 160000))
-#plt.ylim((-2, 2))
+plt.xlim((900, 150000))
+plt.ylim((-0.03, 0.15))
 
 sns.regplot(x=peaknum, y=loop_mean, fit_reg=True, marker="o", color="skyblue")
 for i in range(0, len(loop_mean)):
@@ -170,7 +170,7 @@ print(scipy.stats.kendalltau(peaknum, zscore_mean))
 
 
 # %%
-# loop number vs zsocre 
+# loop number vs zsocre
 
 print(scipy.stats.pearsonr(loop_mean, zscore_mean))
 print(scipy.stats.spearmanr(loop_mean, zscore_mean))
