@@ -61,7 +61,7 @@ p + geom_histogram(aes(y = stat(density), colour = "black"), fill = "white", bin
 
     # labs(title = "Loop Z-Score Histogram", subtitle = "Human") +
     ylab("Dens.") +
-    xlab("Z-Score") +
+    xlab("Contact Z-score") +
     ylim(0, 0.85)
 ggsave(filename = "hisogram_all_zscore.png", path = "../figs/", width = 6.7, height = 6.7)
 ggsave(filename = "hisogram_all_zscore.pdf", path = "../figs/", width = 6.7, height = 6.7)

@@ -57,8 +57,8 @@ ggplot() +
                 linetype = "dotted", size = 0.6, color = "#5D6D7E") +
     geom_vline(aes(xintercept = mk2),
                 linetype = "dotted", size = 0.6, color = "#5D6D7E") +
-    xlab("Loop Z-score") + ylab("Peak Num.") +
-    labs(fill = "Loop Z-score", size = "% CTCF Peaks") +
+    xlab("Contact Z-score") + ylab("Peak Num.") +
+    labs(fill = "Contact Z-score", size = "% CTCF Peaks") +
     stat_cor(data = dat %>% select(zscore, peak_num), aes(zscore, peak_num),
         method = "pearson", label.x.npc = 0, label.y.npc = 1, output.type ="latex")
 
@@ -80,8 +80,8 @@ ggplot() +
                 linetype = "dotted", size = 0.6, color = "#5D6D7E") +
     geom_hline(aes(yintercept = mk2),
                 linetype = "dotted", size = 0.6, color = "#5D6D7E") +
-    ylab("Loop Z-score") + xlab("Peak Num.") +
-    labs(fill = "Loop Z-score", size = "% CTCF Peaks") +
+    ylab("Contact Z-score") + xlab("Peak Num.") +
+    labs(fill = "Contact Z-score", size = "% CTCF Peaks") +
     stat_cor(data = dat %>% select(peak_num, zscore), aes(peak_num, zscore),
         method = "pearson", label.x.npc = 0, label.y.npc = 1, output.type ="latex")
 
