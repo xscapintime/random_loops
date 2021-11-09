@@ -7,7 +7,8 @@ library(tidyverse)
 
 
 ## load table
-dat <- read.csv("../looping_score/looping_score.fin.txt", sep = "\t", header = T, row.names = 1)
+# dat <- read.csv("../looping_score/looping_score.fin.txt", sep = "\t", header = T, row.names = 1)
+dat <- read.csv("../looping_score_v2/looping_score.fin.txt", sep = "\t", header = T, row.names = 1)
 
 
 ## ctcf and cohesin zsocre
@@ -65,5 +66,8 @@ p + geom_histogram(aes(y = stat(density), colour = "black"), fill = "white", bin
     xlab("Z-Score")
     # xlim(-2.2, 2.2) + ylim(0, 0.85)
 
-ggsave(filename = "hisogram_all_zscore.png", path = "../figs/", width = 6.7, height = 6.7)
-ggsave(filename = "hisogram_all_zscore.pdf", path = "../figs/", width = 6.7, height = 6.7)
+# ggsave(filename = "hisogram_all_zscore.png", path = "../figs/", width = 6.7, height = 6.7)
+# ggsave(filename = "hisogram_all_zscore.pdf", path = "../figs/", width = 6.7, height = 6.7)
+
+ggsave(filename = "hisogram_all_zscore_new.png", path = "../figs/", width = 6.7, height = 6.7)
+ggsave(filename = "hisogram_all_zscore_new.pdf", path = "../figs/", width = 6.7, height = 6.7)

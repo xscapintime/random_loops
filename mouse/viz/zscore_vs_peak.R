@@ -8,7 +8,8 @@ library(tidyverse)
 
 ## load table
 # loop zscore
-zscore <- read.csv("../looping_score/looping_score.fin.txt", sep = "\t", header = T, row.names = 1)
+# zscore <- read.csv("../looping_score/looping_score.fin.txt", sep = "\t", header = T, row.names = 1)
+zscore <- read.csv("../looping_score_v2/looping_score.fin.txt", sep = "\t", header = T, row.names = 1)
 
 # peak percentage against CTCF
 per <- read.csv("../../../peak_overlap/mm/getpct/ave_ind_pct.txt",  sep = "\t", header = T, row.names = 1)
@@ -58,9 +59,11 @@ ggplot() +
     stat_cor(data = dat %>% select(zscore, peak_num), aes(zscore, peak_num),
         method = "pearson", label.x.npc = 0, label.y.npc = 1, output.type ="latex")
 
-ggsave("../figs/zscore_vs_peak.png", width = 6.7, height = 6.7)
-ggsave("../figs/zscore_vs_peak.pdf", width = 6.7, height = 6.7)
+# ggsave("../figs/zscore_vs_peak.png", width = 6.7, height = 6.7)
+# ggsave("../figs/zscore_vs_peak.pdf", width = 6.7, height = 6.7)
 
+ggsave("../figs/zscore_vs_peak_new.png", width = 6.7, height = 6.7)
+ggsave("../figs/zscore_vs_peak_new.pdf", width = 6.7, height = 6.7)
 
 
 ## peak num vs zscore
@@ -91,5 +94,8 @@ ggplot() +
     stat_cor(data = dat %>% select(peak_num, zscore), aes(peak_num, zscore),
         method = "pearson", label.x.npc = .78, label.y.npc = 1, output.type ="latex")
 
-ggsave("../figs/peak_vs_zscore.png", width = 6.7, height = 6.7)
-ggsave("../figs/peak_vs_zscore.pdf", width = 6.7, height = 6.7)
+# ggsave("../figs/peak_vs_zscore.png", width = 6.7, height = 6.7)
+# ggsave("../figs/peak_vs_zscore.pdf", width = 6.7, height = 6.7)
+
+ggsave("../figs/peak_vs_zscore_new.png", width = 6.7, height = 6.7)
+ggsave("../figs/peak_vs_zscore_new.pdf", width = 6.7, height = 6.7)
