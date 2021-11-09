@@ -26,7 +26,7 @@ d1 = []
 d2 = []
 
 for f in file:
-    if  re.match('.*r1.*', f) != None:
+    if  re.match('.*_r1.*', f) != None:
         d1.append(pd.read_csv(f,comment='#',header=None))
     else: #re.match('.*r2.*', f) != None:
         d2.append(pd.read_csv(f,comment='#',header=None))

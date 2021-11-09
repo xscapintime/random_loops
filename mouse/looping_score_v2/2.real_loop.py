@@ -112,6 +112,7 @@ print(mback_r2.shape)
 
 
 # %%
+## need reindex because Xxxx_nnnn id
 subed_r1 = normed_r1.subtract(mback_r1).reindex(columns=name1)
 subed_r1.head()
 
