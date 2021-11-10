@@ -3,6 +3,7 @@
 *.txt
 
 *.bed
+*.bed.gz
 
 *.ipynb
 .ipynb_checkpoints/
