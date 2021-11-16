@@ -50,7 +50,7 @@ ggplot() +
     geom_point(data = dat, aes(x = zscore, y = peak_num, fill = zscore, size = percent),
         position = position_nudge(y = -0.1), shape = 21, alpha = .8) +
     scale_fill_viridis(option = "viridis", limits = c(min(dat$zscore), tail(sort(dat$zscore),2)[1]), oob = scales::squish) +
-    geom_text_repel(data = dat %>% filter(abs(zscore) >= 1 | peak_num >= 100000),
+    geom_text_repel(data = dat %>% filter(abs(zscore) >= .75 | peak_num >= 100000),
                     aes(zscore, peak_num, label = Row.names),
                 size = 2.8, segment.size = 0.2, segment.color = "#DCDCDC", parse = T) +
     # scale_fill_gradient(limits = c(min(dat$zscore), max(dat$zscore))) +
@@ -76,7 +76,7 @@ ggplot() +
     geom_point(data = dat, aes(x = peak_num, y = zscore, fill = zscore, size = percent),
         position = position_nudge(y = -0.1), shape = 21, alpha = .8) +
     scale_fill_viridis(option = "viridis", limits = c(min(dat$zscore), tail(sort(dat$zscore),2)[1]), oob = scales::squish) +
-    geom_text_repel(data = dat %>% filter(abs(zscore) >= 1 | peak_num >= 100000),
+    geom_text_repel(data = dat %>% filter(abs(zscore) >= .75 | peak_num >= 100000),
                     aes(peak_num, zscore, label = Row.names),
                 size = 2.8, segment.size = 0.2, segment.color = "#DCDCDC", parse = T) +
     # scale_fill_gradient(limits = c(min(dat$zscore), max(dat$zscore))) +
