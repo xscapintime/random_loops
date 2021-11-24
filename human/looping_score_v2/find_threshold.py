@@ -1,6 +1,5 @@
 """
-
-Get z-score of each row
+Find read thresholds from 4 nearest value to Z-score
 
 """
 
@@ -111,4 +110,6 @@ for j in range(0, zmat.shape[0]):
     print(j, len(np.array(all_idx)[np.array(all_idx) == j]))
 
 # %%
-# So 8-11 is the thresholds to choose.
+# So 9-12 is the thresholds to choose. (index 8-11)
+# export a threshold-selected table
+zmat.iloc[8:12,].to_csv("zmat_thresholds.txt", sep='\t', index=False)
