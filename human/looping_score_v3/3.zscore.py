@@ -67,7 +67,7 @@ for b in bedfile:
 normed_r1 = pd.DataFrame(real_r1.values - mback_r1.values).div(peaknum, axis=1)
 normed_r2 = pd.DataFrame(real_r2.values - mback_r2.values).div(peaknum, axis=1)
 
-pd.concat([normed_r1, normed_r2], axis=1).to_csv("normed.txt", sep='\t', index=False)
+normed = pd.concat([normed_r1, normed_r2], axis=1)
 
 
 # %%
@@ -91,16 +91,22 @@ zmat_r2 = normed_r2.sub(rowmean_r2, axis=0).div(rowsd_r2, axis=0)
 # merge two reps together
 zmat = pd.concat([zmat_r1, zmat_r2], axis=1)
 
+zmat_merge = (zmat_r1+zmat_r2).apply(lambda x: x/2)
 
 # %%
 # exporting
 zmat.columns = real_r1.columns.tolist() + real_r2.columns.tolist()
 zmat.to_csv("zmat.txt", sep='\t', index=False)
 
-# %% 
-zmat_merge = (zmat_r1+zmat_r2).apply(lambda x: x/2)
+normed.columns = real_r1.columns.tolist() + real_r2.columns.tolist()
+normed.to_csv("normed.txt", sep='\t', index=False)
 
+
+# %%
+# export merged table
 names = [ n.split('_r')[0] for n in real_r1.columns.tolist() ]
 zmat_merge.columns = names
+normed_merge.columns = names
 
 zmat_merge.to_csv("zmat_merge.txt", sep='\t', index=False)
+normed_merge.to_csv("normed_merge.txt", sep='\t', index=False)
