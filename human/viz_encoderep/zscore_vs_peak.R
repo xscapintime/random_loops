@@ -13,11 +13,13 @@ zscore <- read.csv("../looping_score_v3/contact_zscore.fin.txt", sep = "\t", hea
 # peak percentage against CTCF
 ## need a new method to get the percentage of peaks
 
-per <- read.csv("../../../peak_overlap/hs/getpct/ave_ind_pct.txt",  sep = "\t", header = T, row.names = 1)
-colnames(per) <- "percent"
+# per <- read.csv("../../../peak_overlap/hs/getpct/ave_ind_pct.txt",  sep = "\t", header = T, row.names = 1)
+per <- read.csv("../../../peak_overlap/hs/ctcf_merged/peak_pct.txt",  sep = "\t", header = F, row.names = 1)
+
+colnames(per)[3] <- "percent"
 
 ## merge
-dat <- merge(zscore, per * 100, by = 0, all = TRUE)
+dat <- merge(zscore, per["percent"] * 100, by = 0, all = TRUE)
 dat <- arrange(dat, desc(zscore))
 
 
@@ -72,8 +74,8 @@ p_fixed <- egg::set_panel_size(p, width  = unit(6, "in"), height = unit(6, "in")
 # ggsave("../figs/zscore_vs_peak_new.png", width = 6.7, height = 6.7)
 # ggsave("../figs/zscore_vs_peak_new.pdf", width = 6.7, height = 6.7)
 
-ggsave("../figs/zscore_vs_peak_v3.png", p_fixed, width = 7, height = 7)
-ggsave("../figs/zscore_vs_peak_v3.pdf", p_fixed, width = 7, height = 7)
+ggsave("../figs/encode_rep/zscore_vs_peak_v3.png", p_fixed, width = 7, height = 7)
+ggsave("../figs/encode_rep/zscore_vs_peak_v3.pdf", p_fixed, width = 7, height = 7)
 
 
 
@@ -103,5 +105,5 @@ p_fixed <- egg::set_panel_size(p, width  = unit(6, "in"), height = unit(6, "in")
 # ggsave("../figs/peak_vs_zscore_new.png", width = 6.7, height = 6.7)
 # ggsave("../figs/peak_vs_zscore_new.pdf", width = 6.7, height = 6.7)
 
-ggsave("../figs/peak_vs_zscore_v3.png", p_fixed, width = 7, height = 7)
-ggsave("../figs/peak_vs_zscore_v3.pdf", p_fixed, width = 7, height = 7)
+ggsave("../figs/encode_rep/peak_vs_zscore_v3.png", p_fixed, width = 7, height = 7)
+ggsave("../figs/encode_rep/peak_vs_zscore_v3.pdf", p_fixed, width = 7, height = 7)
