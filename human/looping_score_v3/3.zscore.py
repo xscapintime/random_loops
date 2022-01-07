@@ -50,6 +50,16 @@ mback_r2 = pd.concat(m_r2, axis=1)
 
 
 # %%
+# subed contact number
+subed_r1 = pd.DataFrame(real_r1.values - mback_r1.values)
+subed_r2 = pd.DataFrame(real_r2.values - mback_r2.values)
+
+subed = pd.concat([subed_r1, subed_r2], axis=1)
+
+subed_merge = (subed_r1+subed_r2).apply(lambda x: x//2) # get integer
+
+
+# %%
 # peak number
 path = '../data/'
 
@@ -69,6 +79,7 @@ normed_r2 = pd.DataFrame(real_r2.values - mback_r2.values).div(peaknum, axis=1)
 
 normed = pd.concat([normed_r1, normed_r2], axis=1)
 
+normed_merge = (normed_r1+normed_r2).apply(lambda x: x/2)
 
 # %%
 # calculate the z-score for each row
@@ -107,6 +118,8 @@ normed.to_csv("normed.txt", sep='\t', index=False)
 names = [ n.split('_r')[0] for n in real_r1.columns.tolist() ]
 zmat_merge.columns = names
 normed_merge.columns = names
+subed_merge.columns = names
 
 zmat_merge.to_csv("zmat_merge.txt", sep='\t', index=False)
 normed_merge.to_csv("normed_merge.txt", sep='\t', index=False)
+subed_merge.to_csv("subed_merge.txt", sep='\t', index=False)
